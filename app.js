@@ -403,3 +403,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderProducts();
 });
+
+
+
+// ######################################################################################################
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Seleciona todas as seções de produtos
+  const productCards = document.querySelectorAll('.product-card');
+
+  productCards.forEach(card => {
+    // Seleciona os elementos do preço original, preço com desconto e o badge de desconto
+    const originalPriceElement = card.querySelector('p > s'); // Preço antigo (dentro de <s>)
+    const salePriceElement = card.querySelector('.sale-price'); // Preço novo
+    const discountBadgeElement = card.querySelector('.discount-badge'); // Badge de desconto
+
+    // Captura os valores do preço original e preço com desconto
+    const originalPrice = parseFloat(originalPriceElement.textContent.replace('R$', '').replace('.', '').replace(',', '.'));
+    const salePrice = parseFloat(salePriceElement.textContent.replace('R$', '').replace('.', '').replace(',', '.'));
+
+    // Calcula o desconto
+    const discountPercent = Math.round(((originalPrice - salePrice) / originalPrice) * 100);
+
+    // Atualiza o texto do badge de desconto
+    discountBadgeElement.textContent = `${discountPercent}% OFF`;
+  });
+});
