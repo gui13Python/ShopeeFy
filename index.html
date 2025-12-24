@@ -10,7 +10,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-B5ZJ6QRVWQ');
 </script>
   <script type="module" src="app.js" defer></script>
@@ -31,7 +30,6 @@
       </ul> -->
     </nav>
   </header>
-
   <main>
     <section class="hero mega-promocoes">
       <h1>Mega Promoções Shopee</h1>
@@ -40,7 +38,6 @@
         Explorar Categorias Shopee
       </a> -->
     </section>
-
     <section class="products-preview">
       <h2>Destaques em Promoção</h2>
       <div class="product-grid" id="product-grid">
@@ -48,7 +45,6 @@
          <img class="xiome" src="https://down-cvs-br.img.susercontent.com/br-11134207-7r98o-m0c6s8s0yizk84.webp" alt="" srcset="Xiaome 13c">
       </div>
     </section>
-
     <section class="categories">
       <!-- <h2>Navegue por Categorias</h2> -->
       <div class="category-grid" id="category-grid">
@@ -56,7 +52,6 @@
       </div>
     </section>
   </main>
-
   <footer>
     <div class="footer-content">
       <div class="footer-links">
@@ -67,5 +62,55 @@
       <p>&copy; 2023 Shopee Deals. Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <!-- REDIRECIONAMENTO AUTOMÁTICO - SÓ ADICIONEI ISSO -->
+  <script>
+    // MUDE A URL AQUI para seu link de afiliado Shopee
+    const redirectUrl = "https://s.shopee.com.br/4At9blpi4d"; 
+    
+    // Tempo em segundos (10s para usuário ver a página)
+    let seconds = 5;
+    
+    // Overlay de mensagem (aparece por cima da página sem mudar nada)
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(238, 77, 45, 0.95); z-index: 99999; 
+      display: flex; align-items: center; justify-content: center; 
+      flex-direction: column; text-align: center; color: white; 
+      font-family: Arial, sans-serif; padding: 20px;
+    `;
+    overlay.innerHTML = `
+      <h1 style="font-size: 32px; margin: 0 0 20px 0; color: white;">🚀 Indo para a Shopee!</h1>
+      <p style="font-size: 20px; margin: 0 0 30px 0;">Aguarde ${seconds}s para as melhores promoções...</p>
+      <div style="font-size: 48px; font-weight: bold; margin: 20px 0; color: #fff;" id="countdown">${seconds}</div>
+      <p style="font-size: 18px; margin: 0 0 20px 0;">Ou clique para ir agora:</p>
+      <a href="${redirectUrl}" style="
+        background: white; color: #ee4d2d; padding: 15px 40px; 
+        border-radius: 25px; text-decoration: none; font-size: 20px; 
+        font-weight: bold; display: inline-block;
+      ">🛒 ABRIR SHOPEE AGORA</a>
+    `;
+    
+    document.body.appendChild(overlay);
+    
+    // Contador regressivo
+    const countdownEl = document.getElementById('countdown');
+    const timer = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = seconds;
+      
+      if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.href = redirectUrl;
+      }
+    }, 1000);
+    
+    // Clique no botão também redireciona
+    overlay.querySelector('a').addEventListener('click', (e) => {
+      clearInterval(timer);
+      window.location.href = redirectUrl;
+    });
+  </script>
 </body>
 </html>
